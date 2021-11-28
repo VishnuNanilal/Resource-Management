@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SceneHandler : SceneManager
+public class SceneHandler : MonoBehaviour
 {
     private List<AsyncOperation> currentOperations = new List<AsyncOperation>();
     public void LoadLevel(int levelNumber)
