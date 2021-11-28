@@ -13,12 +13,11 @@ namespace ResourceSimulation.Core
             get { return instance; }
         }
 
-        private void Awake()
+        protected virtual void Awake()
         {
             if (instance != null)
             {
-                Debug.Log("Singleton instance " + typeof(T) + " trying multiple instantiation.");
-                return;
+                Destroy(gameObject);
             }
             instance = (T)this;
         }

@@ -8,7 +8,8 @@ namespace ResourceSimulation.Core
     {
         [SerializeField] List<GameObject> managers = new List<GameObject>();
 
-        private void Awake() {
+        protected override void Awake() {
+            base.Awake();
             foreach(GameObject manager in managers)
             {
                 GameObject go = Instantiate(manager);

@@ -4,9 +4,10 @@ using UnityEngine;
 
 namespace ResourceSimulation.Core
 {
-    public class Persistency : MonoBehaviour
+    public class Persistency : Singleton<Persistency>
     {
-        private void Awake() {
+        protected override void Awake() {
+            base.Awake();
             DontDestroyOnLoad(gameObject);
         }
     }
