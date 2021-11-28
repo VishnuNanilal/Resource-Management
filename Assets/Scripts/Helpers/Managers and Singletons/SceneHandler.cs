@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -7,6 +8,11 @@ namespace ResourceSimulation.Core
     public class SceneHandler : Singleton<SceneHandler>
     {
         private List<AsyncOperation> currentOperations = new List<AsyncOperation>();
+
+        public event Action loadLevel;
+
+        public event Action SceneCompleteProcesses;
+        
         public void LoadLevel(int levelNumber)
         {
             AsyncOperation ao =  SceneManager.LoadSceneAsync(levelNumber);
@@ -37,6 +43,7 @@ namespace ResourceSimulation.Core
         
         private void OnLevelLoadComplete(AsyncOperation ao)
         {
+            SceneCompleteProcesses();
             currentOperations.Remove(ao);
         }
 

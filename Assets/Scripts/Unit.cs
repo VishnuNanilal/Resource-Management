@@ -25,15 +25,10 @@ public abstract class Unit : MonoBehaviour,
         m_Agent.acceleration = 999;
         m_Agent.angularSpeed = 999;
     }
-
-    private void Start()
-    {
-
-    }
-
+    
     void SetColor(Color c)
     {
-        var colorHandler = GetComponentInChildren<ColorHandler>();
+        var colorHandler = GetComponentInChildren<PrefabColorHandler>();
         if (colorHandler != null)
         {
             colorHandler.SetColor(c);

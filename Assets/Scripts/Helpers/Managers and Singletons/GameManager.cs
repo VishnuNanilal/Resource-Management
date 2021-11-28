@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEditor;
 using System.Collections.Generic;
+using System;
 
 namespace ResourceSimulation.Core
 {
@@ -8,8 +9,12 @@ namespace ResourceSimulation.Core
     {
         [SerializeField] List<GameObject> managers = new List<GameObject>();
 
+        public event Action Save;
+        public event Action Load;
+
         protected override void Awake() {
             base.Awake();
+
             foreach(GameObject manager in managers)
             {
                 GameObject go = Instantiate(manager);
@@ -17,6 +22,16 @@ namespace ResourceSimulation.Core
             }
         }
 
+        public void SaveAll()
+        {
+            Save();
+        }
+
+        public void LoadAll()
+        {
+            Load();
+        }
+        
         public void QuitGame()
         {
             #if UNITY_EDITOR
