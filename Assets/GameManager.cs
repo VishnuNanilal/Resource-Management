@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace ResourceSimulation.Manager
 {
-    public class GameManager : Singleton
+    public class GameManager
     {
 
     }
