@@ -11,7 +11,6 @@ public class ResourcePile : Building
     public ResourceItem Item;
 
     public float ProductionSpeed = 0.5f;
-
     private float m_CurrentProduction = 0.0f;
 
     private void Update()
@@ -35,10 +34,8 @@ public class ResourcePile : Building
         return $"Producing at the speed of {ProductionSpeed}/s";
     }
 
-    void ChangeProfuctionSpeed(float multiplier)
+    public void ChangeProductionSpeed(float multiplier)
     {
-        ProductionSpeed *=  multiplier;
+        ProductionSpeed *= multiplier;
     }
-    
-    
 }
