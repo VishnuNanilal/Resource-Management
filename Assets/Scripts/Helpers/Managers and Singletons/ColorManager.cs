@@ -4,31 +4,28 @@ using UnityEngine;
 
 namespace ResourceSimulation.Core
 {
-    public class ColorManager : MonoBehaviour, Saveable
+    public class ColorManager : Singleton<ColorManager>, Saveable
     {
         private Color activeColor;
         private ColorPicker colorPicker;
 
-        private void Awake() {
-            colorPicker = FindObjectOfType<ColorPicker>();
-            colorPicker.onColorChanged += SetNewColor;
-            SceneHandler.Instance.SceneCompleteProcesses += ApplyColors;
-            GameManager.Instance.Save += Save;
-            GameManager.Instance.Load += Load;
+        protected override void Awake() {
+            base.Awake();
         }
 
-        private void SetNewColor(Color color)
+        private void OnEnable() {
+            GameManager.SaveEvent += Save;
+            GameManager.LoadEvent += Load;
+        }
+
+        public Color GetActiveColor()
+        {
+            return activeColor;    
+        }
+        
+        public void SetNewColor(Color color)
         {
             activeColor = color;
-        }
-
-        private void ApplyColors()
-        {
-            PrefabColorHandler[] colorHandlers = FindObjectsOfType<PrefabColorHandler>();
-            foreach(PrefabColorHandler colorHandler in colorHandlers)
-            {
-                colorHandler.SetColor(activeColor);
-            }
         }
 
         public void Save()
@@ -44,7 +41,6 @@ namespace ResourceSimulation.Core
             activeColor.r = PlayerPrefs.GetFloat("Color_R");
             activeColor.g = PlayerPrefs.GetFloat("Color_G");
             activeColor.b = PlayerPrefs.GetFloat("Color_B");
-            ApplyColors();
         }
     }
 }

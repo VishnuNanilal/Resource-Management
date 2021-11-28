@@ -10,7 +10,7 @@ namespace ResourceSimulation.Core
         public ColorPicker ColorPicker;
 
         private void Awake() {
-            ColorPicker.onColorChanged += NewColorSelected;
+            //ColorPicker.onColorChanged += NewColorSelected;
         }
 
         public void NewColorSelected(Color color)
@@ -22,7 +22,7 @@ namespace ResourceSimulation.Core
         {
             ColorPicker.Init();
             //this will call the NewColorSelected function when the color picker have a color button clicked.
-            ColorPicker.onColorChanged += NewColorSelected;
+            //ColorPicker.onColorChanged += NewColorSelected;
         }
     }
 }

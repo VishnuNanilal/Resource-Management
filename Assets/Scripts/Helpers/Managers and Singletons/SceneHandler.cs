@@ -8,10 +8,6 @@ namespace ResourceSimulation.Core
     public class SceneHandler : Singleton<SceneHandler>
     {
         private List<AsyncOperation> currentOperations = new List<AsyncOperation>();
-
-        public event Action loadLevel;
-
-        public event Action SceneCompleteProcesses;
         
         public void LoadLevel(int levelNumber)
         {
@@ -43,7 +39,6 @@ namespace ResourceSimulation.Core
         
         private void OnLevelLoadComplete(AsyncOperation ao)
         {
-            SceneCompleteProcesses();
             currentOperations.Remove(ao);
         }
 

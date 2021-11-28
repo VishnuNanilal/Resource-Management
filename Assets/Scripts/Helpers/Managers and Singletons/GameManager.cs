@@ -9,8 +9,8 @@ namespace ResourceSimulation.Core
     {
         [SerializeField] List<GameObject> managers = new List<GameObject>();
 
-        public event Action Save;
-        public event Action Load;
+        public static event Action SaveEvent;
+        public static event Action LoadEvent;
 
         protected override void Awake() {
             base.Awake();
@@ -24,12 +24,12 @@ namespace ResourceSimulation.Core
 
         public void SaveAll()
         {
-            Save();
+            SaveEvent();
         }
 
         public void LoadAll()
         {
-            Load();
+            LoadEvent();
         }
         
         public void QuitGame()

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using ResourceSimulation.Core;
 
 public class ColorPicker : MonoBehaviour
 {
@@ -8,7 +9,7 @@ public class ColorPicker : MonoBehaviour
     public Button ColorButtonPrefab;
     
     public Color SelectedColor { get; private set; }
-    public System.Action<Color> onColorChanged;
+    //public System.Action<Color> onColorChanged;
 
     List<Button> m_ColorButtons = new List<Button>();
     
@@ -30,7 +31,7 @@ public class ColorPicker : MonoBehaviour
 
                 newButton.interactable = false;
                 
-                onColorChanged.Invoke(SelectedColor);
+                ColorManager.Instance.SetNewColor(color);
             });
             
             m_ColorButtons.Add(newButton);
