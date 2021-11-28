@@ -6,7 +6,7 @@ namespace ResourceSimulation.Core
 {
     public class Singleton<T> : MonoBehaviour where T : Singleton<T>
     {
-        private static T instance = null;
+        private static T instance;
 
         public static T Instance
         {
@@ -18,6 +18,7 @@ namespace ResourceSimulation.Core
             if (instance != null)
             {
                 Destroy(gameObject);
+                return;
             }
             instance = (T)this;
         }
