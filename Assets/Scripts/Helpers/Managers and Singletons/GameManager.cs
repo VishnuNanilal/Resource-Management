@@ -10,7 +10,10 @@ namespace ResourceSimulation.Core
 
         private void Awake() {
             foreach(GameObject manager in managers)
-                Instantiate(manager);
+            {
+                GameObject go = Instantiate(manager);
+                go.transform.parent = gameObject.transform.parent;
+            }
         }
 
         public void QuitGame()
