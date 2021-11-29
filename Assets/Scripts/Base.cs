@@ -16,6 +16,11 @@ public class Base : Building
         Instance = this;
     }
 
+    public int GetCurrentAmount()
+    {
+        return m_CurrentAmount;
+    }
+
     private void Update() {
         print(m_CurrentAmount);
     }
