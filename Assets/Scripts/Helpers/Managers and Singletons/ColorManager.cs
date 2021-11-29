@@ -1,16 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace ResourceSimulation.Core
 {
     public class ColorManager : Singleton<ColorManager>, Saveable
     {
-        private Color activeColor;
+        private Color currentColor;
         private ColorPicker colorPicker;
 
         protected override void Awake() {
             base.Awake();
+            CurrentColorLoad();
         }
 
         private void OnEnable() {
@@ -20,27 +19,52 @@ namespace ResourceSimulation.Core
 
         public Color GetActiveColor()
         {
-            return activeColor;    
+            return currentColor;    
         }
         
         public void SetNewColor(Color color)
         {
-            activeColor = color;
+            currentColor = color;
+            CurrentColorSave();
         }
 
         public void Save()
         {
-            PlayerPrefs.SetFloat("Color_R", activeColor.r);
-            PlayerPrefs.SetFloat("Color_G", activeColor.g);
-            PlayerPrefs.SetFloat("Color_B", activeColor.b);
+            PlayerPrefs.SetFloat("PreSelectColor_R", currentColor.r);
+            PlayerPrefs.SetFloat("PreSelectColor_G", currentColor.g);
+            PlayerPrefs.SetFloat("PreSelectColor_B", currentColor.b);
+            PlayerPrefs.SetFloat("Color_R", currentColor.r);
+            PlayerPrefs.SetFloat("Color_G", currentColor.g);
+            PlayerPrefs.SetFloat("Color_B", currentColor.b);
             PlayerPrefs.Save();
         }
 
         public void Load()
         {
-            activeColor.r = PlayerPrefs.GetFloat("Color_R");
-            activeColor.g = PlayerPrefs.GetFloat("Color_G");
-            activeColor.b = PlayerPrefs.GetFloat("Color_B");
+            currentColor.r = PlayerPrefs.GetFloat("Color_R");
+            currentColor.g = PlayerPrefs.GetFloat("Color_G");
+            currentColor.b = PlayerPrefs.GetFloat("Color_B");
+            PlayerPrefs.SetFloat("PreSelectColor_R", currentColor.r);
+            PlayerPrefs.SetFloat("PreSelectColor_G", currentColor.g);
+            PlayerPrefs.SetFloat("PreSelectColor_B", currentColor.b);
+        }
+
+        private void CurrentColorSave() //to preselect last selected color while the game loads
+        {
+            PlayerPrefs.SetFloat("PreSelectColor_R", currentColor.r);
+            PlayerPrefs.SetFloat("PreSelectColor_G", currentColor.g);
+            PlayerPrefs.SetFloat("PreSelectColor_B", currentColor.b);
+            PlayerPrefs.Save();
+        }
+
+        private void CurrentColorLoad() //to preselect last selected color while the game loads
+        {
+            currentColor.r = PlayerPrefs.GetFloat("PreSelectColor_R");
+            currentColor.g = PlayerPrefs.GetFloat("PreSelectColor_G");
+            currentColor.b = PlayerPrefs.GetFloat("PreSelectColor_B");
+
+            if(currentColor == null)
+                currentColor = Color.red;
         }
     }
 }

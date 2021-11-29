@@ -20,8 +20,4 @@ public class Base : Building
     {
         return m_CurrentAmount;
     }
-
-    private void Update() {
-        print(m_CurrentAmount);
-    }
 }
