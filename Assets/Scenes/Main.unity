@@ -1547,6 +1547,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7514282602740898460, guid: 79d7c88d232401041a7cf2c8adafb877, type: 3}
   m_PrefabInstance: {fileID: 1494287445}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1515094514 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1047628581, guid: 2c711c53ad47b83409ac3aa71ef70768, type: 3}
+  m_PrefabInstance: {fileID: 1527948972727434739}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be7959f1748abef49b4cdc41d5959ae7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1522453667
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2232,6 +2243,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 154279300, guid: 2c711c53ad47b83409ac3aa71ef70768, type: 3}
+      propertyPath: dropPoint
+      value: 
+      objectReference: {fileID: 1515094514}
+    - target: {fileID: 1047628581, guid: 2c711c53ad47b83409ac3aa71ef70768, type: 3}
+      propertyPath: InventorySpace
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1350671594, guid: 2c711c53ad47b83409ac3aa71ef70768, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 18.8
+      objectReference: {fileID: 0}
     - target: {fileID: 1350767642119213370, guid: 2c711c53ad47b83409ac3aa71ef70768, type: 3}
       propertyPath: m_RootOrder
       value: 13
@@ -2279,10 +2302,6 @@ PrefabInstance:
     - target: {fileID: 1870459146737535872, guid: 2c711c53ad47b83409ac3aa71ef70768, type: 3}
       propertyPath: m_Name
       value: DropPoint
-      objectReference: {fileID: 0}
-    - target: {fileID: 2912728040503546206, guid: 2c711c53ad47b83409ac3aa71ef70768, type: 3}
-      propertyPath: baseSpace
-      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2c711c53ad47b83409ac3aa71ef70768, type: 3}

@@ -185,7 +185,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: c5aa5070ecc894b41b2ffc0552aa423d, type: 3}
       propertyPath: m_Name
-      value: DropPoint
+      value: DropPoint Variant
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: c5aa5070ecc894b41b2ffc0552aa423d, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -259,17 +259,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InventorySpace: -1
---- !u!114 &2912728040503546206
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1870459146737535872}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aeafd6c1df00ba840b3b66571702615f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  InventorySpace: -1
-  baseSpace: 0

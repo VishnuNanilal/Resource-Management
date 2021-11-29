@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TruckMovement : MonoBehaviour
 {
-    [SerializeField] GameObject dropPoint;
+    [SerializeField] Building dropPoint;
     [SerializeField] float speed = 1f;
     [SerializeField] Transform targetTransform;
 
@@ -15,6 +15,7 @@ public class TruckMovement : MonoBehaviour
     private void Awake() {
         initialPos = transform.position;    
         targetPos = targetTransform.position;
+        dropPoint.InventoryFullEvent += StartMovement;
     }
 
     public void StartMovement()
@@ -45,6 +46,7 @@ public class TruckMovement : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, initialPos, speed * Time.deltaTime);
             if (Mathf.Approximately(transform.position.z, initialPos.z))
             {
+                dropPoint.
                 StopAllCoroutines();
             }
             yield return null;

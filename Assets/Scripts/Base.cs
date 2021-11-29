@@ -15,4 +15,8 @@ public class Base : Building
     {
         Instance = this;
     }
+
+    private void Update() {
+        print(m_CurrentAmount);
+    }
 }

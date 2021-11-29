@@ -9,6 +9,7 @@ using UnityEngine;
 public abstract class Building : MonoBehaviour,
     UIMainScene.IUIInfoContent
 {
+    public event Action InventoryFullEvent;
     //need to be serializable for the save system, so maybe added the attribute just when doing the save system
     [System.Serializable]
     public class InventoryEntry
@@ -32,8 +33,16 @@ public abstract class Building : MonoBehaviour,
         int maxInventorySpace = InventorySpace == -1 ? Int32.MaxValue : InventorySpace;
         
         if (m_CurrentAmount == maxInventorySpace)
-            return amount;
+        {
+            if(InventoryFullEvent != null)
+            {
+                InventoryFullEvent(); 
+                m_CurrentAmount = 0;
+            }
 
+            return amount;
+        }
+            
         int found = m_Inventory.FindIndex(item => item.ResourceId == resourceId);
         int addedAmount = Mathf.Min(maxInventorySpace - m_CurrentAmount, amount);
         
