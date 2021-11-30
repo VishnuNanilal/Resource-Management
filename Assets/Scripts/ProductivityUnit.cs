@@ -6,29 +6,38 @@ public class ProductivityUnit : Unit
 {
     [SerializeField] float productivityMultiplier = 1f;
 
-    ResourcePile resourcePile = null;
+    ResourcePile m_currentPile = null;
 
     protected override void BuildingInRange()
     {
-        if(isAssigned) return;
-        isAssigned = true;
+        if(m_currentPile != null) return;
         
-        resourcePile = m_Target as ResourcePile;
+        ResourcePile resourcePile = m_Target as ResourcePile;
         if(resourcePile != null)
         {
             resourcePile.ChangeProductionSpeed(productivityMultiplier);
-            isAssigned = true;
+            m_currentPile = resourcePile;
         }
     }
 
-    protected override void Update() 
+    public override void GoTo(Building target)
     {
-        base.Update();
-        if(m_Target == null && isAssigned)
+        ResetProductivity();
+        base.GoTo(target);
+    }
+
+    public override void GoTo(Vector3 position)
+    {
+        ResetProductivity();
+        base.GoTo(position);
+    }
+
+    void ResetProductivity()
+    {
+        if(m_currentPile != null)
         {
-            isAssigned = false;
-            resourcePile.ChangeProductionSpeed(1/productivityMultiplier);
+            m_currentPile.ChangeProductionSpeed(1/productivityMultiplier);
+            m_currentPile = null;
         }
-    
     }
 }

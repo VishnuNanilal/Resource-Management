@@ -16,7 +16,6 @@ public abstract class Unit : MonoBehaviour,
     protected NavMeshAgent m_Agent;
     protected Building m_Target;
     //bool to check if this unit has changed the values it was assigned to change.
-    protected bool isAssigned = false;
 
     protected void Awake()
     {
